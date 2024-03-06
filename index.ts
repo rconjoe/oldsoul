@@ -13,12 +13,10 @@ import { $ } from "bun";
 
 Bun.serve({
   port: 4250,
-  async fetch(req) {
+  fetch(req) {
     console.log(req);
-    const { url, body: { category, text } } = req;
-    await $`figlet -f banner -w 48 -Wk -c ${category} | tee /tmp/DEVTERM_PRINTER_IN`;
-    await $`figlet -f bubbles -w 48 -Wk -c ${url} | tee /tmp/DEVTERM_PRINTER_IN`;
-    Bun.write("/tmp/DEVTERM_PRINTER_IN", text);
+    // await $`figlet -f banner -w 48 -Wk -c ${category} | tee /tmp/DEVTERM_PRINTER_IN`;
+    Bun.write("/tmp/DEVTERM_PRINTER_IN", req.url);
     return new Response("ok");
   },
 });
