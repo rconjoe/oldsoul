@@ -1,11 +1,7 @@
-import { $ } from "bun";
-
-Bun.serve({
-  fetch(req: Request) {
-    console.log(req);
-    const targout = req.json();
-    $`echo ${targout} >> /tmp/DEVTERM_PRINTER_IN`;
-    return new Response("ok");
-  },
-  port: 8005,
-});
+for await (const chunk of Bun.stdin.stream()) {
+  // chunk is Uint8Array
+  // this converts it to text (assumes ASCII encoding)
+  const chunkText = Buffer.from(chunk).toString();
+  console.log(`Chunk: ${chunkText}`);
+  Bun.write("/tmp/DEVTERM_PRINTER_IN", chunkText);
+}
