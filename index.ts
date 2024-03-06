@@ -6,9 +6,9 @@ const server = Bun.serve({
     const here = new URL(req.url);
     if (here.pathname === "/") {
 	    const now = Date.now()
-	    await $`figlet -f small -w 48 -Wk -c ${req.headers.get("title")
+	    await $`figlet -f banner -w 48 -Wk -c ${req.headers.get("title")
 	      } | tee /tmp/DEVTERM_PRINTER_IN`;
-	    await $`figlet -f mini -w 48 -c ${req.headers.get("subtitle")} | tee /tmp/DEVTERM_PRINTER_IN`;
+	    await $`figlet -f script -w 48 -c ${req.headers.get("subtitle")} | tee /tmp/DEVTERM_PRINTER_IN`;
 	    await $`figlet -f term -w 48 -c "~" | tee /tmp/DEVTERM_PRINTER_IN`;
 	    await $`figlet -f term -w 48 -c ${new Intl.DateTimeFormat("en-US", {
 		    dateStyle: "full",
@@ -26,7 +26,7 @@ const server = Bun.serve({
 	    await $`figlet -f mini -w 48 -c "generic"} | tee /tmp/DEVTERM_PRINTER_IN`;
 	    await $`figlet -f term -w 48 -c "~" | tee /tmp/DEVTERM_PRINTER_IN`;
 	    await $`figlet -f term -w 48 -c ${new Intl.DateTimeFormat("en-US", {
-		    dateStyle: "full",
+		    dateStyle: "long",
 		    timeStyle: "long",
 		    timeZone: "America/Los_Angeles"
 	    }).format(new Date(now))} | tee /tmp/DEVTERM_PRINTER_IN`;
