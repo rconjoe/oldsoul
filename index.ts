@@ -11,7 +11,7 @@ import { $ } from "bun";
 //   await $`figlet -f small -w 48 ${chunkText} | tee /tmp/DEVTERM_PRINTER_IN`;
 // }
 
-Bun.serve({
+const server = Bun.serve({
   port: 4250,
   fetch(req) {
     console.log(req);
@@ -20,3 +20,5 @@ Bun.serve({
     return new Response("ok");
   },
 });
+
+console.log(`Listening on ${server.url}`);
