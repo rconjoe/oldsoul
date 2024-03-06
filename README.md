@@ -1,4 +1,8 @@
+![c17611584db3110ca33aa8333f5475dbac39b109](https://github.com/rconjoe/oldsoul/assets/48492680/0b9dd421-a506-43e0-95f2-4b03b5b9d863)
+
 # oldsoul
+
+Thermal prints figlet formatted text from HTTP requests.
 
 To install dependencies:
 
@@ -6,10 +10,9 @@ To install dependencies:
 bun install
 ```
 
-To run:
+To compile:
 
 ```bash
-bun run index.ts
+bun run compile
 ```
-
-This project was created using `bun init` in bun v1.0.29. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
+outputs to bin/oldsoul.
