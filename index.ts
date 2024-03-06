@@ -6,6 +6,5 @@ for await (const chunk of Bun.stdin.stream()) {
   const chunkText = Buffer.from(chunk).toString();
   console.log(`Chunk: ${chunkText}`);
   Bun.write("/tmp/DEVTERM_PRINTER_IN", chunkText);
-  const fgd = await $`echo ${chunk}`;
-  console.log(fgd);
+  await $`echo ${chunkText}`;
 }
