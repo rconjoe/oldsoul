@@ -178,3 +178,4 @@ dist
 install/cache
 build/
 
+bin
