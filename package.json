@@ -2,6 +2,10 @@
   "name": "oldsoul",
   "module": "index.ts",
   "type": "module",
+  "bin": "./bin/oldsoul",
+  "scripts": {
+    "compile": "bun build --compile --minify --sourcemap ./index.ts --outfile ./bin/oldsoul"
+  },
   "devDependencies": {
     "@types/bun": "latest"
   },
