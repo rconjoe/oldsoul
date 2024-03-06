@@ -6,7 +6,7 @@ for await (const chunk of Bun.stdin.stream()) {
   const chunkText = Buffer.from(chunk).toString();
   console.log(`Chunk: ${chunkText}`);
   Bun.write("/tmp/DEVTERM_PRINTER_IN", chunkText);
-  Bun.spawn(
+  Bun.spawn([
     `figlet -f script -w 48 -Wk ${chunkText} | tee /tmp/DEVTERM_PRINTER_IN`,
-  );
+  ]);
 }
